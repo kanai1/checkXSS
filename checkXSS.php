@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>XSS검사</title>
 	<?php
+		$domain = '';
 		if(isset($_GET['domain'])) $domain = $_GET['domain'];
 		else die();
 
@@ -28,6 +29,8 @@
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 
 			$result = json_decode(curl_exec($curl), true);
+
+			echo $result;
 
 			if(strcmp($result['result_code'], "400") == 0)
 			{
