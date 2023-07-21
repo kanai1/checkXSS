@@ -46,8 +46,8 @@
 
 			if(strcmp($result['result'], "true") == 0)
 			{
-				$stmt = $conn->prepare("SELECT flag from flag WHERE domain like ?");
-				$stmt->bind_param('s', '%'.$domain.'%');
+				$stmt = $conn->prepare("SELECT flag from flag WHERE domain = ?");
+				$stmt->bind_param('s', $domain);
 
 				if($stmt->execute())
 				{
