@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>XSS검사</title>
 	<?php
-		if(!isset($_GET['domain'])) $domain = $_GET['domain'];
+		if(isset($_GET['domain'])) $domain = $_GET['domain'];
 		else die();
 
 		$conn = mysqli_connect('localhost', 'TeamA', 'TeamA1234567@', 'kknock');
