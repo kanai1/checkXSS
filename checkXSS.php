@@ -31,14 +31,12 @@
 			$json = curl_exec($curl);
 			$result = json_decode($json, true);
 
-			echo $json.'<br>'.$result;
-
 			if(strcmp($result['result_code'], "400") == 0)
 			{
 				$heredoc = <<< HERE
-				오류가 발생했습니다.
-				잠시후 다시 시도해주세요.
-				오류가 지속적으로 발생한다면 13기 권시훈에게 문의주세요.
+				오류가 발생했습니다.<br>
+				잠시후 다시 시도해주세요.<br>
+				오류가 지속적으로 발생한다면 13기 권시훈에게 문의주세요.<br>
 				HERE;
 
 				echo $heredoc;

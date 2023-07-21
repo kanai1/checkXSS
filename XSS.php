@@ -2,7 +2,7 @@
 	header('Content-Type:application/json; charset-UTF-8;');
 
 	if(!in_array('application/json',explode(';',$_SERVER['CONTENT_TYPE']))){
-		echo json_encode(array('result_code' => '400'));
+		echo json_encode(array('result_code' => '400', 'error' => 'is not json'));
 		exit;
 	}
 
