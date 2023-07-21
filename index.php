@@ -42,6 +42,10 @@
 					echo $heredoc;
 				}
 			}
+			else
+			{
+				// DB오류
+			}
 		}
 	?>
 		</table>
