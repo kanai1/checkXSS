@@ -18,7 +18,7 @@
 	}
 	catch(Exception $e)
 	{
-		echo json_encode(array('result_code' => '400', 'url' => $inputURL, 'error' => $e));
+		echo json_encode(array('result_code' => '400', 'url' => $inputURL, 'error' => $e->getMessage()));
 		exit;
 	}
 	if(strcmp('http://localhost/', $currentURL) == 0)
