@@ -34,8 +34,8 @@
 				{
 					$heredoc = <<< HERE
 					<tr>
-						<td><a href="checkXSS?domain={$row['domain']}">{$row['name']}</a></td>
-						<td><a href="checkXSS?domain={$row['domain']}">{$row['domain']}</a></td>
+						<td><a href="checkXSS.php?domain={$row['domain']}">{$row['name']}</a></td>
+						<td><a href="checkXSS.php?domain={$row['domain']}">{$row['domain']}</a></td>
 					</tr>
 					HERE;
 
