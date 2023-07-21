@@ -28,9 +28,10 @@
 			curl_setopt($curl, CURLOPT_POST, 1);
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 
-			$result = json_decode(curl_exec($curl), true);
+			$json = curl_exec($curl);
+			$result = json_decode($json, true);
 
-			echo $result;
+			echo $json.'<br>'.$result;
 
 			if(strcmp($result['result_code'], "400") == 0)
 			{
