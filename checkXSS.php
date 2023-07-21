@@ -46,22 +46,39 @@
 
 			if(strcmp($result['result'], "true") == 0)
 			{
-				$stmt = $conn->prepare("SELECT flag from flag WHERE domain = ?");
+				$stmt = $conn->prepare("SELECT name, flag from flag WHERE domain = ?");
 				$stmt->bind_param('s', $domain);
 
 				if($stmt->execute())
 				{
 					$result = $stmt->get_result()->fetch_assoc();
-					echo $result['flag'];
+					$heredoc = <<< HERE
+					name: {$result['name']}<br>
+					flag: {$result['flag']}<br>
+					HERE;
+					echo $$heredoc;
 				}
 				else
 				{
-					// DB오류
+					$heredoc = <<< HERE
+					오류가 발생했습니다.<br>
+					잠시후 다시 시도해주세요.<br>
+					오류가 지속적으로 발생한다면 13기 권시훈에게 문의주세요.<br>
+					HERE;
+
+					echo $heredoc;
+					die();
 				}
 			}
 			else
 			{
-				// 실패~
+				$heredoc = <<< HERE
+				<script>location.href='http://localhost'<script>
+				가 포함된 XSS공격 후 다시 시도해주세요
+				HERE;
+
+				echo "XSS가 감지되지 않았습니다<br>";
+				echo htmlentities($heredoc);
 			}
 		}
 		else
