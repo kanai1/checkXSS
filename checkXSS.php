@@ -18,7 +18,7 @@
 		{
 			// 받은 url에서 XSS체크하기
 
-			$url = $domain."/".$_GET['url'];
+			$url = 'http://'.$domain.'/'.$_GET['url'];
 			$data = json_encode(array('url' => $url, 'domain' => $domain));
 
 			$curl = curl_init();
@@ -31,13 +31,30 @@
 
 			if(strcmp($result['result_code'], "400") == 0)
 			{
-				// 오류
+				$heredoc = <<< HERE
+				오류가 발생했습니다.
+				잠시후 다시 시도해주세요.
+				오류가 지속적으로 발생한다면 13기 권시훈에게 문의주세요.
+				HERE;
+
+				echo $heredoc;
 				die();
 			}
 
 			if(strcmp($result['result'], "true") == 0)
 			{
-				// flag출력
+				$stmt = $conn->prepare("SELECT flag from flag WHERE domain like ?");
+				$stmt->bind_param('s', '%'.$domain.'%');
+
+				if($stmt->execute())
+				{
+					$result = $stmt->get_result()->fetch_assoc();
+					echo $result['flag'];
+				}
+				else
+				{
+					// DB오류
+				}
 			}
 			else
 			{
