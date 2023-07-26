@@ -54,7 +54,8 @@
 					name: {$result['name']}<br>
 					flag: {$result['flag']}<br>
 					HERE;
-					echo $$heredoc;
+
+					echo $heredoc;
 				}
 				else
 				{
