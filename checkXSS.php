@@ -17,8 +17,6 @@
 	<?php
 		if(isset($_GET['url']))
 		{
-			// 받은 url에서 XSS체크하기
-
 			$url = 'http://'.$domain.'/'.$_GET['url'];
 			$data = json_encode(array('url' => $url, 'domain' => $domain));
 
@@ -83,7 +81,13 @@
 		}
 		else
 		{
-			// XSS 뚫은 url 입력받기
+			$heredoc = <<< HERE
+			<form action='checkXSS.php' method='GET'>
+				<input type='hidden' name='domain' value={$domain}>
+				<span>{$domain}/</span>
+				<input type='text' name='url'>
+			</form>
+			HERE;
 		}
 	?>
 </body>
