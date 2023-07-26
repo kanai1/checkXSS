@@ -88,6 +88,8 @@
 				<input type='text' name='url'>
 			</form>
 			HERE;
+
+			echo $heredoc;
 		}
 	?>
 </body>
