@@ -83,9 +83,10 @@
 		else
 		{
 			$heredoc = <<< HERE
+			<h1>XSS침해가 일어난 URL을 입력해주세요.<h1>
 			<form action='checkXSS.php' method='GET'>
 				<input type='hidden' name='domain' value={$domain}>
-				<span>{$domain}/</span>
+				<span>http://{$domain}/</span>
 				<input type='text' name='url'>
 			</form>
 			HERE;
