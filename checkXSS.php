@@ -44,7 +44,7 @@
 
 			if(strcmp($result['result'], "true") == 0)
 			{
-				$stmt = $conn->prepare("SELECT name, flag from flag WHERE domain = ?");
+				$stmt = $conn->prepare("SELECT name, flag from flag WHERE domain = ? ORDER BY created DESC");
 				$stmt->bind_param('s', $domain);
 
 				if($stmt->execute())
