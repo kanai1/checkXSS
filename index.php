@@ -24,7 +24,7 @@
 		if(isset($_GET['search']))
 		{
 			$keyword = "%{$_GET['search']}%";
-			$stmt->prepare("SELECT name, domain from flag WHERE name like ? or domain like ?");
+			$stmt->prepare("SELECT name, domain from flag WHERE name like ? or domain like ? DISTINCT");
 			$stmt->bind_param('ss', $keyword, $keyword);
 
 			if($stmt->execute())
