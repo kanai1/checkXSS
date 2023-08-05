@@ -17,7 +17,7 @@
 	<?php
 		if(isset($_GET['url']))
 		{
-			$url = 'http://'.$domain.'/'.$_GET['url'];
+			$url = $domain.'/'.$_GET['url'];
 			$data = json_encode(array('url' => $url, 'domain' => $domain));
 
 			$curl = curl_init();
