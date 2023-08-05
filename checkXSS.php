@@ -17,6 +17,7 @@
 	<?php
 		if(isset($_GET['url']))
 		{
+			if(strcmp(substr($domain, 0, 7), "http://") != 0) $domain = "http://".$domain;
 			$url = $domain.'/'.$_GET['url'];
 			$data = json_encode(array('url' => $url, 'domain' => $domain));
 
@@ -86,7 +87,7 @@
 			<h1>XSS침해가 일어난 URL을 입력해주세요.</h1>
 			<form action='checkXSS.php' method='GET'>
 				<input type='hidden' name='domain' value={$domain}>
-				<span>{$domain}/</span>
+				<span>{$domain}</span>
 				<input type='text' name='url'>
 			</form>
 			HERE;
