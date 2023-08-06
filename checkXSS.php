@@ -32,7 +32,7 @@
 			$json = curl_exec($curl);
 			$result = json_decode($json, true);
 
-			echo $result;
+			print_r($result);
 
 			if(strcmp($result['result_code'], "400") == 0)
 			{
