@@ -18,9 +18,7 @@
 		if(isset($_GET['url']))
 		{
 			$url = 'http://'.$domain.'/'.$_GET['url'];
-			$cookiename = isset($_GET['cookiename'])?$_GET['cookiename']:'null';
-			$cookievalue = isset($_GET['cookievalue'])?$_GET['cookievalue']:'null';
-			$data = json_encode(array('url' => $url, 'domain' => $domain, 'cookiename' => $cookiename, 'cookievalue' => $cookievalue));
+			$data = json_encode(array('url' => $url, 'domain' => $domain));
 
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, "20.200.213.238:3737/XSS.php");
@@ -93,10 +91,6 @@
 				<input type='hidden' name='domain' value={$domain}>
 				<span>{$domain}</span>
 				<input type='text' name='url'><br>
-				<span>로그인이 필요하다면 아래 쿠키값을 채워주세요.</span>
-				쿠키이름: <input type='text' name=cookiename>
-				쿠키값: <input type='text' name='cookievalue'>
-				<button type='summit'>입력</button>
 			</form>
 			HERE;
 
