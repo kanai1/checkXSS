@@ -82,6 +82,7 @@
 
 				echo "XSS가 감지되지 않았습니다<br>";
 				echo htmlentities($heredoc);
+				print_r($result);
 			}
 		}
 		else
