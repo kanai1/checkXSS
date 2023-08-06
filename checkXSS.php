@@ -91,6 +91,7 @@
 				<span>로그인이 필요하다면 아래 쿠키값을 채워주세요.</span>
 				쿠키이름: <input type='text' name=cookiename>
 				쿠키값: <input type='text' name='cookievalue'>
+				<button type='summit'>입력</button>
 			</form>
 			HERE;
 
