@@ -30,8 +30,6 @@
 			$json = curl_exec($curl);
 			$result = json_decode($json, true);
 
-			print_r($result);
-
 			if(strcmp($result['result_code'], "400") == 0)
 			{
 				$heredoc = <<< HERE
@@ -80,7 +78,6 @@
 
 				echo "XSS가 감지되지 않았습니다<br>";
 				echo htmlentities($heredoc);
-				print_r($result);
 			}
 		}
 		else
