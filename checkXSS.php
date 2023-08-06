@@ -32,6 +32,8 @@
 			$json = curl_exec($curl);
 			$result = json_decode($json, true);
 
+			echo $result;
+
 			if(strcmp($result['result_code'], "400") == 0)
 			{
 				$heredoc = <<< HERE
