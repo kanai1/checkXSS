@@ -17,8 +17,7 @@
 	<?php
 		if(isset($_GET['url']))
 		{
-			if(strcmp(substr($domain, 0, 7), "http://") != 0) $domain = "http://".$domain;
-			$url = $domain.'/'.$_GET['url'];
+			$url = 'http://'.$domain.'/'.$_GET['url'];
 			$data = json_encode(array('url' => $url, 'domain' => $domain));
 
 			$curl = curl_init();
@@ -45,7 +44,7 @@
 
 			if(strcmp($result['result'], "true") == 0)
 			{
-				$stmt = $conn->prepare("SELECT name, flag from flag WHERE domain = ? ORDER BY created DESC limit 1");
+				$stmt = $conn->prepare("SELECT name, flag from flag WHERE domain = ? ORDER BY created DESC");
 				$stmt->bind_param('s', $domain);
 
 				if($stmt->execute())
@@ -87,8 +86,11 @@
 			<h1>XSS침해가 일어난 URL을 입력해주세요.</h1>
 			<form action='checkXSS.php' method='GET'>
 				<input type='hidden' name='domain' value={$domain}>
-				<span>{$domain}</span>
-				<input type='text' name='url'>
+				<span>http://{$domain}/</span>
+				<input type='text' name='url'><br>
+				<span>로그인이 필요하다면 아래 쿠키값을 채워주세요.</span>
+				쿠키이름: <input type='text' name=cookiename>
+				쿠키값: <input type='text' name='cookievalue'>
 			</form>
 			HERE;
 
