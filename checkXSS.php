@@ -45,8 +45,8 @@
 
 			if(strcmp($result['result'], "true") == 0)
 			{
-				$stmt = $conn->prepare("SELECT name, flag from flag WHERE domain like ? ORDER BY created DESC limit 1");
-				$stmt->bind_param('s', '%'.$domain.'%');
+				$stmt = $conn->prepare("SELECT name, flag from flag WHERE domain = ? ORDER BY created DESC limit 1");
+				$stmt->bind_param('s', $domain);
 
 				if($stmt->execute())
 				{
