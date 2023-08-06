@@ -11,6 +11,8 @@
 
 	$inputURL = $data['url'];
 	$domain = $data['domain'];
+	$cookiename = $data['cookiename'];
+	$cookievalue = $data['cookievalue'];
 
 	try
 	{
